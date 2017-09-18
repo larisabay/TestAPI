@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2845f7eb-c710-4a7f-ae67-d5d911febb4b" created="2.1.0" activeEnvironment="Default environment" name="REST Project API Test" resourceRoot="" updated="2.1.0 20170726-1100" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="d813fe3e-bfc0-4a3d-8dc9-63975d6f4577" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://ghibliapi.herokuapp.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>https://ghibliapi.herokuapp.com</con:endpoint></con:endpoints><con:resource name="Films" path="/films" id="e8bda619-5671-499c-b47c-716c993ab10b"><con:settings/><con:parameters/><con:method name="Films" id="465cb371-c853-407c-aae8-20c8f8c969f8" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="039f92b2-0d37-47a9-8264-e301e5687b71" mediaType="application/json"><con:settings/><con:endpoint>https://ghibliapi.herokuapp.com</con:endpoint><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:parameters/></con:request></con:method></con:resource></con:interface><con:interface xsi:type="con:RestService" id="9884182b-e8ca-43e1-980b-64c36d4b6ade" wadlVersion="http://wadl.dev.java.net/2009/02" name="REST Service 1" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>https://ghibliapi.herokuapp.com</con:endpoint></con:endpoints><con:resource name="/films/2baf70d1-42bb-4437-b551-e5fed5a87abe" path="/films/{id1}" id="688733f7-6727-4235-9742-1e197671d799"><con:settings/><con:parameters><con:parameter><con:name>id1</con:name><con:style>TEMPLATE</con:style></con:parameter></con:parameters><con:method name="GET" id="5c41409f-5905-4d19-9a11-aeaaad177ec7" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:baf="https://ghibliapi.herokuapp.com/films/2baf70d1-42bb-4437-b551-e5fed5a87abe">baf:Response</con:element></con:representation><con:request name="GET Request" id="4bb8e16f-5b14-408b-8c10-79f459ea1468" mediaType="application/json"><con:settings/><con:endpoint>https://ghibliapi.herokuapp.com</con:endpoint><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:parameters/><con:parameterOrder><con:entry>id1</con:entry></con:parameterOrder></con:request></con:method></con:resource></con:interface><con:testSuite id="33edd65d-a708-44ab-859b-c56e62eb87d9" name="https://ghibliapi.herokuapp.com TestSuite"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:runType>SEQUENTIAL</con:runType><con:testCase id="cc3dc5d5-ba49-416c-b45a-d71f6a6b4984" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="https://ghibliapi.herokuapp.com TestCase 1" searchProperties="true" timeout="0"><con:settings/><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="restrequest" name="FindAllFilms" id="98765d37-704e-4c2e-969c-cf9ffb38382e"><con:settings/><con:config service="https://ghibliapi.herokuapp.com" resourcePath="/films" methodName="Films" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="FindAllFilms" id="039f92b2-0d37-47a9-8264-e301e5687b71" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ghibliapi.herokuapp.com</con:endpoint><con:request/><con:originalUri>https://ghibliapi.herokuapp.com/films</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="2b173c58-b93e-40f7-8645-ade221f0a857" name="Valid HTTP Status Codes"><con:settings/><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="776b54cf-b481-4cbf-8430-cb3c6ae35ac6"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false" disabled="false"><con:name>id1</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>FindAllFilms</con:sourceStep><con:sourcePath>$[1]['id']</con:sourcePath><con:targetType>id1</con:targetType><con:targetStep>SelectFilm</con:targetStep><con:targetPath/><con:type>JSONPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="properties" name="Properties" id="ba3f9a11-de7e-44c0-baea-cfbcd115abb1"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>id1</con:name><con:value>12cfb892-aac0-4c5b-94af-521852e46d6a</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="restrequest" name="SelectFilm" id="b729a925-6dba-4af2-a903-7ffd85c02a8b"><con:settings/><con:config service="REST Service 1" resourcePath="/films/{id1}" methodName="GET" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="SelectFilm" id="4bb8e16f-5b14-408b-8c10-79f459ea1468" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ghibliapi.herokuapp.com</con:endpoint><con:request>12cfb892-aac0-4c5b-94af-521852e46d6a</con:request><con:originalUri>https://ghibliapi.herokuapp.com/films/2baf70d1-42bb-4437-b551-e5fed5a87abe</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="1f73d996-565f-4752-b3a9-1933a915b88d" name="Valid HTTP Status Codes"><con:settings/><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:parameters><entry key="id1" value="12cfb892-aac0-4c5b-94af-521852e46d6a" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id1</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script Find All" id="b541a6fd-a868-49f2-a949-0b1a5d74a23a"><con:settings/><con:config><script>fileName = "C:/PROJECTS/DCW/DCWresults/"
+
+//Get Current date time stamp to append the same in the file name. 
+
+def date = new Date() 
+
+def dts = date.format("yyyy-MM-dd-HH-mm-ss") 
+
+log.info dts
+
+replaceText = "\r\n"
+
+// ------------------------------Now do the request   
+webServiceName = "FindAllFilms"
+curEndPoint = "ghibliapi.herokuapp.com"
+
+def myRESTRequest = fileName + webServiceName  + "_"  + "Request" +  "_"  + curEndPoint  +".txt"
+
+log.info myRESTRequest
+
+def myRESTResponse = fileName + webServiceName  + "_"  + "Response" +  "_"  + curEndPoint  +".txt"
+ 
+log.info myRESTResponse
+
+hyperLinkmyRESTResponse = "file:///" + myRESTResponse
+
+log.info hyperLinkmyRESTResponse
+
+context.setProperty( "c:/temp/tstResponse", myRESTResponse)
+
+context.setProperty( "c:/temp/tstRequest", myRESTRequest)
+
+def rawRequest = context.expand( '${FindAllFilms#RawRequest}' )
+def Request = "GET https://ghibliapi.herokuapp.com/films HTTP/1.1"
+
+def Response = context.expand( '${FindAllFilms#Response}' )
+log.info "Request  " + rawRequest
+
+log.info "Response  " + Response
+
+// now let's do both Request and Response in the same file
+
+reqText = replaceText  + replaceText + "==========request =========================================" + replaceText + replaceText
+
+resText = replaceText  + replaceText + "==========response ========================================" + replaceText + replaceText
+fileText3 = reqText + Request.replaceAll("\n", replaceText) +  resText + Response.replaceAll("\n", replaceText) 
+
+def req3 = new File(myRESTResponse) 
+
+req3.write(fileText3)
+</script></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script Select One" id="92b3e3b6-9796-4446-aee1-8742357e5942"><con:settings/><con:config><script>fileName = "C:/PROJECTS/DCW/DCWresults/"
+
+//Get Current date time stamp to append the same in the file name. 
+
+def date = new Date() 
+
+def dts = date.format("yyyy-MM-dd-HH-mm-ss") 
+
+log.info dts
+
+replaceText = "\r\n"
+
+// ------------------------------Now do the request   
+webServiceName = "SelectFilm"
+curEndPoint = "ghibliapi.herokuapp.com"
+
+def myRESTRequest = fileName + webServiceName  + "_"  + "Request" +  "_"  + curEndPoint  +".txt"
+
+log.info myRESTRequest
+
+def myRESTResponse = fileName + webServiceName  + "_"  + "Response" +  "_"  + curEndPoint  +".txt"
+ 
+log.info myRESTResponse
+
+hyperLinkmyRESTResponse = "file:///" + myRESTResponse
+
+log.info hyperLinkmyRESTResponse
+
+context.setProperty( "c:/temp/tstResponse", myRESTResponse)
+
+context.setProperty( "c:/temp/tstRequest", myRESTRequest)
+
+//def endpoint = context.expand( '${SelectFilm#Endpoint}' )
+def rawRequest = context.expand( '${SelectFilm#RawRequest}' )
+def Request = "GET https://ghibliapi.herokuapp.com/films/12cfb892-aac0-4c5b-94af-521852e46d6a"
+
+def Response = context.expand( '${SelectFilm#Response}' )
+log.info "Request  " + rawRequest
+
+log.info "Response  " + Response
+
+// now let's do both Request and Response in the same file
+
+reqText = replaceText  + replaceText + "==========request =========================================" + replaceText + replaceText
+
+resText = replaceText  + replaceText + "==========response ========================================" + replaceText + replaceText
+fileText3 = reqText + Request.replaceAll("\n", replaceText) +  resText + Response.replaceAll("\n", replaceText) 
+
+def req3 = new File(myRESTResponse) 
+
+req3.write(fileText3)
+</script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:savedRecentRuns>1</con:savedRecentRuns><con:requirements/><con:properties><con:property><con:name>REST Project 1</con:name><con:value/></con:property></con:properties><con:wssContainer/><con:databaseConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:reportTemplates/><con:xmlTemplates/><con:xmlTemplates/><con:parameters/><con:parameters/></con:reporting><con:reporting/><con:authRepository/><con:tags/></con:soapui-project>
